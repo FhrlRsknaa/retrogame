@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Retro Emulator - Material You</title>
+    <title>Retro Emulator - Layar Penuh</title>
     <style>
-        /* Tema Dasar - Material You */
+        /* Tema Dasar */
         html, body {
             margin: 0;
             padding: 0;
-            background-color: #E0E0E0; /* Abu-abu terang khas Material You */
+            background-color: #E0E0E0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             height: 100%;
-            height: 100dvh; /* Adaptif untuk layar HP modern */
-            touch-action: none; /* Mencegah scroll di HP */
+            height: 100dvh;
+            touch-action: none;
             overflow: hidden;
             user-select: none;
             -webkit-user-select: none;
@@ -35,7 +35,7 @@
 
         .menu-header {
             margin-bottom: 30px;
-            color: #3E2723; /* Coklat tua */
+            color: #3E2723;
             font-size: 28px;
             font-weight: 900;
             text-align: center;
@@ -86,7 +86,7 @@
 
         /* --- LAYAR GAME (Awalnya Disembunyikan) --- */
         #game-view {
-            display: none; /* Disembunyikan sampai game dipilih */
+            display: none;
             flex-direction: column;
             height: 100%;
             width: 100%;
@@ -118,15 +118,14 @@
             background-color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Area Game (Bagian Atas) */
+        /* Area Game (Layar Penuh) */
         #game-wrapper {
             flex: 1;
             width: 100%;
-            background-color: #121212; /* Layar game hitam */
+            background-color: #121212;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
             z-index: 2;
             position: relative;
         }
@@ -134,7 +133,6 @@
         #game-container {
             width: 100%;
             height: 100%;
-            max-width: 800px;
             position: relative;
         }
 
@@ -143,110 +141,9 @@
             height: 100%;
         }
 
-        /* Sembunyikan Virtual Gamepad Bawaan EmulatorJS */
+        /* Menyembunyikan Gamepad Bawaan EmulatorJS (Opsional) */
         div[id^="ejs-virtual-gamepad"], .ejs-virtual-gamepad {
             display: none !important;
-        }
-
-        /* Area Custom Gamepad Material You (Bagian Bawah) */
-        #material-gamepad {
-            height: 40vh; /* Mengambil 40% dari tinggi layar */
-            min-height: 220px;
-            width: 100%;
-            background-color: #E0E0E0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 30px;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Gaya Tombol Dasar - Material You (Coklat Solid) */
-        .mat-btn {
-            background-color: #795548; /* Coklat Solid Material */
-            color: #FFFFFF;
-            border: none;
-            outline: none;
-            box-shadow: 0 4px 10px rgba(121, 85, 72, 0.35);
-            transition: transform 0.1s ease, background-color 0.1s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Efek saat ditekan */
-        .mat-btn:active, .mat-btn.pressed {
-            transform: scale(0.92);
-            background-color: #5D4037; /* Coklat Gelap */
-            box-shadow: 0 2px 4px rgba(121, 85, 72, 0.5);
-        }
-
-        /* --- D-PAD --- */
-        .dpad-container {
-            position: relative;
-            width: 150px;
-            height: 150px;
-        }
-
-        .dpad-btn {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            color: rgba(255,255,255,0.7); /* Panah sedikit transparan */
-            font-size: 20px;
-        }
-
-        /* Bentuk Pill untuk setiap arah D-PAD */
-        .dpad-btn.up { top: 0; left: 50px; border-radius: 24px 24px 8px 8px; }
-        .dpad-btn.down { bottom: 0; left: 50px; border-radius: 8px 8px 24px 24px; }
-        .dpad-btn.left { top: 50px; left: 0; border-radius: 24px 8px 8px 24px; }
-        .dpad-btn.right { top: 50px; right: 0; border-radius: 8px 24px 24px 8px; }
-        
-        .dpad-center {
-            position: absolute;
-            top: 50px; left: 50px;
-            width: 50px; height: 50px;
-            background-color: #795548;
-            border-radius: 8px;
-            z-index: 0;
-        }
-
-        /* --- Tombol Aksi (A, B, C) --- */
-        .action-container {
-            display: flex;
-            gap: 16px;
-            transform: rotate(-15deg); /* Dimiringkan sedikit agar ergonomis untuk jempol */
-            margin-bottom: 25px;
-        }
-
-        .action-btn {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%; /* Lingkaran penuh khas Material */
-            font-size: 26px; /* Huruf membesar */
-            font-weight: 900; /* Cetak Tebal (Bold) */
-            color: #FFFFFF; /* Warna Putih */
-        }
-
-        /* --- Tombol START --- */
-        .system-container {
-            position: absolute;
-            bottom: 45px; /* Dinaikkan sedikit agar tidak tertimpa tulisan 'build by fahrul' */
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .sys-btn {
-            padding: 12px 36px;
-            border-radius: 32px; /* Bentuk Pill memanjang */
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            color: #FFFFFF;
         }
 
         /* --- WATERMARK / CREDIT --- */
@@ -255,18 +152,18 @@
             bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            border: 2px solid #8D6E63; /* Border bulat kecoklatan */
-            border-radius: 20px; /* Rounded */
+            border: 2px solid #8D6E63;
+            border-radius: 20px;
             padding: 6px 16px;
-            font-weight: bold; /* Font bold */
+            font-weight: bold;
             color: #4E342E;
-            background-color: rgba(255, 255, 255, 0.6); /* Transparan */
+            background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             font-size: 12px;
             letter-spacing: 0.5px;
             z-index: 100;
-            pointer-events: none; /* Tidak mengganggu klik/sentuhan game */
+            pointer-events: none;
         }
 
     </style>
@@ -278,13 +175,11 @@
         <div class="menu-header">Pilih Permainan</div>
         
         <div class="menu-list">
-            <!-- Kartu Game 1 -->
             <button class="game-card" onclick="startGame('fixitfelix.md')">
                 <span class="game-title">Fix-It Felix Jr.</span>
                 <span class="game-platform">Sega Genesis</span>
             </button>
             
-            <!-- Kartu Game 2 -->
             <button class="game-card" onclick="startGame('supermario.gen')">
                 <span class="game-title">Super Mario Bros</span>
                 <span class="game-platform">Sega Genesis</span>
@@ -292,9 +187,8 @@
         </div>
     </div>
 
-    <!-- LAYAR 2: TAMPILAN EMULATOR & GAMEPAD -->
+    <!-- LAYAR 2: TAMPILAN EMULATOR LAYAR PENUH -->
     <div id="game-view">
-        <!-- Area Emulator -->
         <div id="game-wrapper">
             <div id="top-bar">
                 <button class="btn-back" onclick="location.reload()">&#8592; Ganti Game</button>
@@ -303,35 +197,9 @@
                 <div id="game"></div>
             </div>
         </div>
-
-        <!-- Area Virtual Gamepad Custom -->
-        <div id="material-gamepad">
-            
-            <!-- D-PAD Kiri -->
-            <div class="dpad-container">
-                <button class="mat-btn dpad-btn up" data-key="UP">▲</button>
-                <button class="mat-btn dpad-btn left" data-key="LEFT">◀</button>
-                <div class="dpad-center"></div>
-                <button class="mat-btn dpad-btn right" data-key="RIGHT">▶</button>
-                <button class="mat-btn dpad-btn down" data-key="DOWN">▼</button>
-            </div>
-
-            <!-- Tombol START Tengah -->
-            <div class="system-container">
-                <button class="mat-btn sys-btn" data-key="START">START</button>
-            </div>
-
-            <!-- Tombol Aksi Kanan (Huruf Di Dalam) -->
-            <div class="action-container">
-                <button class="mat-btn action-btn" data-key="A">A</button>
-                <button class="mat-btn action-btn" data-key="B">B</button>
-                <button class="mat-btn action-btn" data-key="C">C</button>
-            </div>
-
-        </div>
     </div>
 
-    <!-- TULISAN CREDIT DI BAWAH (build by fahrul) -->
+    <!-- TULISAN CREDIT DI BAWAH -->
     <div class="credit-badge">build by fahrul</div>
 
     <script>
@@ -345,77 +213,15 @@
             window.EJS_player = '#game';
             window.EJS_core = 'segaMD'; 
             window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/'; 
-            window.EJS_color = '#795548'; // Warna Coklat Material You
+            window.EJS_color = '#795548'; 
             window.EJS_startOnLoaded = true;
-            window.EJS_gameUrl = romFileName; // Memuat file berdasarkan tombol yang dipilih
+            window.EJS_gameUrl = romFileName; 
 
             // Memasukkan script EmulatorJS
             const script = document.createElement('script');
             script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
             document.body.appendChild(script);
         }
-
-        // --- LOGIC CUSTOM VIRTUAL GAMEPAD ---
-        // Pemetaan Tombol Custom ke Keyboard Emulator
-        const keyMapping = {
-            'UP': { key: 'ArrowUp', code: 'ArrowUp', keyCode: 38 },
-            'DOWN': { key: 'ArrowDown', code: 'ArrowDown', keyCode: 40 },
-            'LEFT': { key: 'ArrowLeft', code: 'ArrowLeft', keyCode: 37 },
-            'RIGHT': { key: 'ArrowRight', code: 'ArrowRight', keyCode: 39 },
-            'A': { key: 'z', code: 'KeyZ', keyCode: 90 }, // Genesis A = tombol Z
-            'B': { key: 'x', code: 'KeyX', keyCode: 88 }, // Genesis B = tombol X
-            'C': { key: 'c', code: 'KeyC', keyCode: 67 }, // Genesis C = tombol C
-            'START': { key: 'Enter', code: 'Enter', keyCode: 13 }
-        };
-
-        // Fungsi untuk menembak event keyboard buatan ke Emulator
-        function simulateKey(action, isDown) {
-            const map = keyMapping[action];
-            if (!map) return;
-
-            const eventType = isDown ? 'keydown' : 'keyup';
-            const e = new KeyboardEvent(eventType, { 
-                bubbles: true, 
-                cancelable: true,
-                key: map.key,
-                code: map.code,
-                keyCode: map.keyCode,
-                which: map.keyCode
-            });
-
-            // Kirim event agar terbaca oleh EmulatorJS
-            window.dispatchEvent(e);
-            document.dispatchEvent(e);
-            const canvas = document.querySelector('#game canvas');
-            if (canvas) canvas.dispatchEvent(e);
-        }
-
-        // Sambungkan setiap tombol HTML ke fungsi simulateKey
-        document.querySelectorAll('.mat-btn').forEach(btn => {
-            const action = btn.getAttribute('data-key');
-            if (!action) return;
-
-            // Mencegah klik kanan/double tap zoom di HP
-            btn.addEventListener('contextmenu', e => e.preventDefault());
-
-            // Saat jari menyentuh tombol
-            btn.addEventListener('pointerdown', (e) => {
-                e.preventDefault();
-                btn.classList.add('pressed');
-                simulateKey(action, true);
-            });
-
-            // Saat jari dilepas dari tombol
-            const releaseBtn = (e) => {
-                e.preventDefault();
-                btn.classList.remove('pressed');
-                simulateKey(action, false);
-            };
-
-            btn.addEventListener('pointerup', releaseBtn);
-            btn.addEventListener('pointerleave', releaseBtn);
-            btn.addEventListener('pointercancel', releaseBtn);
-        });
     </script>
 </body>
 </html>
