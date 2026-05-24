@@ -11,10 +11,10 @@
             padding: 0;
             background-color: #E0E0E0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            width: 100%;
             height: 100%;
-            height: 100dvh;
             touch-action: none;
-            overflow: hidden;
+            overflow: hidden; /* Mencegah layar bisa di-scroll ke bawah */
             user-select: none;
             -webkit-user-select: none;
         }
@@ -84,20 +84,44 @@
             font-weight: 600;
         }
 
-        /* --- LAYAR GAME (Awalnya Disembunyikan) --- */
+        /* --- LAYAR GAME (Perbaikan Posisi Absolute) --- */
         #game-view {
-            display: none;
-            flex-direction: column;
-            height: 100%;
+            display: none; /* Akan diubah menjadi block oleh JS */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #121212;
+            z-index: 20;
+        }
+
+        /* Area Game (Layar Penuh) */
+        #game-wrapper {
             width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #game-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #game {
+            width: 100%;
+            height: 100%;
         }
 
         /* Top Bar Ganti Game */
         #top-bar {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 5;
+            top: 15px;
+            left: 15px;
+            z-index: 100; /* Pastikan tombol di atas kanvas game */
         }
 
         .btn-back {
@@ -118,33 +142,14 @@
             background-color: rgba(255, 255, 255, 0.4);
         }
 
-        /* Area Game (Layar Penuh) */
-        #game-wrapper {
-            flex: 1;
-            width: 100%;
-            background-color: #121212;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-            position: relative;
-        }
-
-        #game-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        #game {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Menyembunyikan Gamepad Bawaan EmulatorJS (Opsional) */
-        div[id^="ejs-virtual-gamepad"], .ejs-virtual-gamepad {
+        /* Saya mematikan (comment) kode yang menyembunyikan gamepad di bawah ini 
+           agar kontrol gamepad muncul dengan baik saat dimainkan di HP.
+           Hapus tanda komentar jika kamu memang sengaja ingin menghilangkannya.
+        */
+        /* div[id^="ejs-virtual-gamepad"], .ejs-virtual-gamepad {
             display: none !important;
-        }
+        } 
+        */
 
         /* --- WATERMARK / CREDIT --- */
         .credit-badge {
@@ -205,9 +210,9 @@
     <script>
         // --- FUNGSI MEMULAI GAME ---
         function startGame(romFileName) {
-            // Sembunyikan Menu, Tampilkan Game
+            // Sembunyikan Menu, Tampilkan Game menggunakan 'block' bukan 'flex'
             document.getElementById('menu-screen').style.display = 'none';
-            document.getElementById('game-view').style.display = 'flex';
+            document.getElementById('game-view').style.display = 'block'; 
 
             // Konfigurasi Emulator JS
             window.EJS_player = '#game';
